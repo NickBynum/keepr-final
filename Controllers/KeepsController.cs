@@ -20,6 +20,7 @@ namespace Keepr.Controllers
         {
             _ks = ks;
         }
+        //NOTE path is https://localhost:5001/api/
         [HttpGet]
         public ActionResult<IEnumerable<Keep>> Get()
         {
