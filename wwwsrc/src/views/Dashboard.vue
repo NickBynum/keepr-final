@@ -19,7 +19,9 @@
 import Modal from "../utils/Modal"
 import addNewKeep from "../components/addNewKeep"
 export default {
-  data() {},
+  data() {
+    return {}
+  },
   mounted() { },
   computed: {},
   method: {

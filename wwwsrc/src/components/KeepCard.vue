@@ -1,7 +1,7 @@
 <template>
-  <div class="KeepCard">
+  <div class="KeepCard m-2">
     <div class="card" style="width: 18rem;">
-      <img :src="publicKeeps.img" class="card-img-top" alt="#" width="100" height="100" />
+      <img :src="keepData.img" class="card-img-top" alt="#" />
       <div class="card-body">
         <h5 class="card-title">Sample Keep</h5>
       </div>
@@ -72,11 +72,12 @@
 <script>
 export default {
   name: 'KeepCard',
+  props: ["keepData"],
   data() {
     return {}
   },
   mounted() {
-    // this.$store.dispatch("getKeeps", this.$route.params.keepId)
+    this.$store.dispatch("getAllKeeps")
   },
   computed: {},
   methods: {},

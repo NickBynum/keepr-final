@@ -16,7 +16,7 @@
     </div>
     <div class="row">
       <div class="col-2">
-        <KeepCard v-for="publicKeeps in publicKeeps" :key="publicKeeps.id"></KeepCard>
+        <KeepCard v-for="publicKeep in publicKeeps" :keepData="publicKeep" :key="publicKeep.id"></KeepCard>
       </div>
     </div>
     <!-- {{ publicKeeps }} -->
@@ -27,7 +27,12 @@
 import KeepCard from "../components/KeepCard"
 export default {
   name: "home",
-  mounted() {},
+  data() {
+    return {}
+  },
+  mounted() {
+    this.$store.dispatch("getAllKeeps");
+  },
   computed: {
     user() {
       return this.$store.state.user;
