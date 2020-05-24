@@ -14,22 +14,35 @@
         </form>
       </div>
     </div>
-    {{ publicKeeps }}
+    <div class="row">
+      <div class="col-2">
+        <KeepCard v-for="publicKeeps in publicKeeps" :key="publicKeeps.id"></KeepCard>
+      </div>
+    </div>
+    <!-- {{ publicKeeps }} -->
   </div>
 </template>
 
 <script>
+import KeepCard from "../components/KeepCard"
 export default {
   name: "home",
+  mounted() {},
   computed: {
     user() {
       return this.$store.state.user;
+    },
+    publicKeeps() {
+      return this.$store.state.publicKeeps;
     }
   },
   methods: {
     logout() {
       this.$store.dispatch("logout");
     }
+  },
+  components: {
+    KeepCard
   }
 };
 </script>
