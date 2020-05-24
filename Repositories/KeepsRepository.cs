@@ -28,7 +28,7 @@ namespace Keepr.Repositories
 (name, description, userId, img, isPrivate, views, shares, keeps)
 VALUES
 (@name, @description, @userId, @img, @isPrivate, @views, @shares, @keeps);
-SELECT LAST_INSERT_ID";
+SELECT LAST_INSERT_ID()";
     KeepData.Id = _db.ExecuteScalar<int>(sql, KeepData);
     return KeepData;
         }

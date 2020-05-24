@@ -43,9 +43,9 @@ export default new Vuex.Store({
         alert(JSON.stringify(e));
       }
     },
-    async createKeep({ commit, dispatch }, newKeep) {
+    async addNewKeep({ commit, dispatch }, newKeep) {
       let res = await api.post("keeps", newKeep)
-      dispatch("getKeeps")
+      dispatch("getAllKeeps")
     }
   },
 });
