@@ -14,12 +14,9 @@
         </form>
       </div>
     </div>
-    <div class="row">
-      <div class="col-2">
+    <div class="row justify-content-between">
         <KeepCard v-for="publicKeep in publicKeeps" :keepData="publicKeep" :key="publicKeep.id"></KeepCard>
-      </div>
     </div>
-    <!-- {{ publicKeeps }} -->
   </div>
 </template>
 

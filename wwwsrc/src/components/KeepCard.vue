@@ -1,5 +1,5 @@
 <template>
-  <div class="KeepCard m-2">
+  <div class="KeepCard m-2 col-12 col-md-3">
     <div class="card" style="width: 18rem;">
       <img :src="keepData.img" class="card-img-top" alt="#" />
       <div class="card-body">
