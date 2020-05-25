@@ -18,6 +18,7 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     publicKeeps: [],
+    privateKeeps: [],
     // activeKeeps: [],
     // Vaults: [],
     // activeVault: [],
@@ -25,7 +26,10 @@ export default new Vuex.Store({
   mutations: {
     setKeeps(state, keeps) {
       state.publicKeeps = keeps
-    }
+    },
+    setPrivKeeps(state, keeps) {
+      state.privateKeeps = keeps
+    },
   },
   actions: {
     setBearer({ }, bearer) {
@@ -39,6 +43,14 @@ export default new Vuex.Store({
       try {
         let res = await api.get("keeps")
         commit("setKeeps", res.data)
+      } catch (e) {
+        alert(JSON.stringify(e));
+      }
+    },
+    async getPrivateKeeps({ commit, dispatch }) {
+      try {
+        let res = await api.get("keeps")
+        commit("setPrivKeeps", res.data)
       } catch (e) {
         alert(JSON.stringify(e));
       }
