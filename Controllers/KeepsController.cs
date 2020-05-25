@@ -33,6 +33,26 @@ namespace Keepr.Controllers
                 return BadRequest(e.Message);
             };
         }
+        //NOTE path does not follow standards https://localhost:5001/api/keeps/user
+        [Authorize]
+        [HttpGet("user")]
+        public ActionResult<IEnumerable<Keep>> GetKeepsByUser()
+        {
+            try
+            {
+                Claim user = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+                if (user == null)
+                {
+                    throw new Exception("You must be logged in to get your keeps!.");
+                }
+                string userId = user.Value;
+                return Ok(_ks.GetByUserId(userId));
+            }
+            catch (System.Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
                 // NOTE path is https://localhost:5001/api/keeps/id
         [HttpGet("{id}")]
         public ActionResult<Keep> GetById(int id)
