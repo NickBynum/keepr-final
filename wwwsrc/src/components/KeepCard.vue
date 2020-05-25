@@ -1,6 +1,6 @@
 <template>
-  <div class="KeepCard m-2 col-12 col-md-2">
-    <div class="card" style="width: 15rem;">
+  <div class="KeepCard m-2 col-12 col-md-3">
+    <div class="card" style="width: 18rem;">
       <img :src="keepData.img" class="card-img-top" alt="Oops! There was a problem with this link!" />
       <div class="card-body">
         <h6 class="card-title text-center">{{keepData.name}}</h6>

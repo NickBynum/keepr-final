@@ -1,5 +1,5 @@
 <template>
-  <div class="PrivateKeepCard m-2 col-12 col-md-2">
+  <div class="UserKeepCard m-2 col-12 col-md-2">
     <div class="card" style="width: 15rem;">
       <img :src="keepData.img" class="card-img-top" alt="Oops! There was a problem with this link!" />
       <div class="card-body">
@@ -120,13 +120,13 @@
 
 <script>
 export default {
-  name: 'privateKeepCard',
+  name: 'userKeepCard',
   props: ["keepData"],
   data() {
     return {}
   },
   mounted() {
-    this.$store.dispatch("getPrivateKeeps")
+    this.$store.dispatch("getUserKeeps")
   },
   computed: {},
   methods: {},
