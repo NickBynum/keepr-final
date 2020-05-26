@@ -1,15 +1,15 @@
 <template>
   <div class="dashboard container-fluid">
     <div class="row mt-2">
-        <!-- ---------Add New Keep--------- -->
-        <div class="col-6">
-          <button
-            class="btn btn-outline-primary btn-block"
-            data-toggle="modal"
-            data-target="#addKeepModal"
-          >New Keep!</button>
-        </div>
-        <!-- ---------Add New Vault--------- -->
+      <!-- ---------Add New Keep--------- -->
+      <div class="col-6">
+        <button
+          class="btn btn-outline-primary btn-block"
+          data-toggle="modal"
+          data-target="#addKeepModal"
+        >New Keep!</button>
+      </div>
+      <!-- ---------Add New Vault--------- -->
       <div class="col-6">
         <button
           class="btn btn-outline-secondary btn-block"
@@ -22,9 +22,9 @@
         <addNewKeep></addNewKeep>
       </Modal>
       <!-- //NOTE ---------ALL User's Keeps ------------>
-      </div>
-      <div class="row justify-content-between">
-        <userKeepCard v-for="userKeep in userKeeps" :keepData="userKeep" :key="userKeep.id"></userKeepCard>
+    </div>
+    <div class="row justify-content-between">
+      <userKeepCard v-for="userKeep in userKeeps" :keepData="userKeep" :key="userKeep.id"></userKeepCard>
     </div>
   </div>
 </template>
