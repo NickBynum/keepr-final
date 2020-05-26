@@ -111,7 +111,7 @@ export default {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.value) {
-          Swal.fire(
+          this.$swal.fire(
             'Deleted!',
             'Your Keep has been deleted.',
             'success'
