@@ -68,7 +68,7 @@
             <button class="btn btn-block bg-info text-light">Edit</button>
           </div>
           <div class="col-12 p-0">
-            <button class="btn btn-block bg-danger text-light">Delete</button>
+            <button class="btn btn-block bg-danger text-light" @click="deleteKeep()">Delete</button>
           </div>
       </div>
     </div>
@@ -87,7 +87,11 @@ export default {
     this.$store.dispatch("getUserKeeps")
   },
   computed: {},
-  methods: {},
+  methods: {
+        deleteKeep() {
+      this.$store.dispatch("deleteKeep", this.keepData.id)
+    }
+  },
   components: {}
 }
 </script>

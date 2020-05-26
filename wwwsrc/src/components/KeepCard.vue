@@ -114,11 +114,13 @@
         </button>
       </div>
     </div>
+    <Modal></Modal>
   </div>
 </template>
 
 
 <script>
+import Modal from "../utils/Modal"
 export default {
   name: 'KeepCard',
   props: ["keepData"],

@@ -1,23 +1,24 @@
 <template>
   <div class="dashboard container-fluid">
-    <div class="row">
-      <col-5>
-        <button
-          class="btn btn-outline-primary"
-          data-toggle="modal"
-          data-target="#addKeepModal"
-        >New Keep!</button>
-      </col-5>
-      <!-- ---------Slot Modal--------- -->
-      <Modal title="Keep new Keeps Kept!" id="addKeepModal">
-        <!-- ---------Add New Vault--------- -->
-        <col-5>
+    <div class="row mt-2">
+        <!-- ---------Add New Keep--------- -->
+        <div class="col-6">
           <button
-            class="btn btn-outline-primary"
+            class="btn btn-outline-primary btn-block"
             data-toggle="modal"
             data-target="#addKeepModal"
           >New Keep!</button>
-        </col-5>
+        </div>
+        <!-- ---------Add New Vault--------- -->
+      <div class="col-6">
+        <button
+          class="btn btn-outline-secondary btn-block"
+          data-toggle="modal"
+          data-target="#addVaultModal"
+        >New Vault!</button>
+      </div>
+      <!-- ---------Slot Modal--------- -->
+      <Modal title="Keep new Keeps Kept!" id="addKeepModal">
         <addNewKeep></addNewKeep>
       </Modal>
       <!-- //NOTE ---------ALL User's Keeps ------------>
