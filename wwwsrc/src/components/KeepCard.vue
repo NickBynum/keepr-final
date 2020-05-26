@@ -111,7 +111,11 @@
             </svg>
           </button>
           <!-- View Keep Details -->
-          <button class="btn btn-lg bg-primary text-light">
+          <button
+            class="btn btn-lg bg-primary text-light"
+            data-toggle="modal"
+            data-target="#keepDetailsModal"
+          >
             <svg
               class="bi bi-eye"
               width="1em"
@@ -132,7 +136,9 @@
           </button>
         </div>
       </div>
-      <Modal></Modal>
+      <Modal id="keepDetailsModal">
+        <KeepDetails></KeepDetails>
+      </Modal>
     </div>
   </div>
 </template>
@@ -140,6 +146,7 @@
 
 <script>
 import Modal from "../utils/Modal"
+import KeepDetails from "../views/KeepDetails"
 export default {
   name: 'KeepCard',
   props: ["keepData"],
@@ -151,7 +158,10 @@ export default {
   },
   computed: {},
   methods: {},
-  components: { Modal }
+  components: {
+    Modal,
+    KeepDetails
+  }
 }
 </script>
 

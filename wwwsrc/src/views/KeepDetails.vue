@@ -1,6 +1,6 @@
 <template>
   <div class="KeepDetails">
-{{this.keepData.img}}
+    {{this.keepData}}
     <div class="modal-footer justify-content-center">
       <button type="button" class="btn btn-danger mr-4" data-dismiss="modal">Close</button>
     </div>
@@ -11,6 +11,7 @@
 <script>
 export default {
   name: 'component',
+  props: ['keepData'],
   data(){
     return {}
   },
