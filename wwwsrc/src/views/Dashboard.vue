@@ -39,10 +39,10 @@
       </Modal>
       <!-- //NOTE ---------ALL User's Keeps ------------>
     </div>
-    <div v-if="!vaultView" class="row justify-content-star">
+    <div v-if="!vaultView" class="row justify-content-start">
       <userKeepCard v-for="userKeep in userKeeps" :keepData="userKeep" :key="userKeep.id"></userKeepCard>
     </div>
-    <div v-else class="row justify-content-star">
+    <div v-else class="row justify-content-start">
       <vaultCard v-for="vault in vaults" :vaultData="vault" :key="vault.id"></vaultCard>
     </div>
   </div>
