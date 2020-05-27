@@ -37,7 +37,7 @@ namespace Keepr.Controllers
 
     [Authorize]
     [HttpGet("user")]
-    public ActionResult<IEnumerable<Keep>> VaultsByUser()
+    public ActionResult<IEnumerable<Vault>> VaultsByUser()
     {
       try
       {
@@ -54,5 +54,18 @@ namespace Keepr.Controllers
         return BadRequest(err.Message);
       }
     }
+            public ActionResult<Vault> Post([FromBody] Vault newVault)
+        {
+            try
+            {
+                var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                newVault.UserId = userId;
+                return Ok(_vs.Create(newVault));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
   }
 }
