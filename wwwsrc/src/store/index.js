@@ -83,14 +83,14 @@ export default new Vuex.Store({
         alert(JSON.stringify(e));
       }
     },
-      async deleteVault({ dispatch }, vaultId) {
-        try {
-          await api.delete("vaults/" + vaultId)
-          dispatch("getUserVaults")
-        } catch (error) {
-          alert(JSON.stringify(error.response.data));
-        }
+    async deleteVault({ dispatch }, vaultId) {
+      try {
+        await api.delete("vaults/" + vaultId)
+        dispatch("getUserVaults")
+      } catch (error) {
+        alert(JSON.stringify(error.response.data));
+      }
     },
   },
-  
+
 });
