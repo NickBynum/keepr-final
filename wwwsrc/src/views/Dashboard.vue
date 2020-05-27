@@ -23,6 +23,10 @@
           data-target="#addVaultModal"
         >New Vault!</button>
       </div>
+            <!-- ---------Slot Modal--------- -->
+      <Modal title="Keep your Keeps Kept, in the vault!" id="addVaultModal">
+        <addNewVault></addNewVault>
+      </Modal>
       <!-- ---------Slot Modal--------- -->
       <Modal title="Keep new Keeps Kept!" id="addKeepModal">
         <addNewKeep></addNewKeep>
@@ -43,6 +47,7 @@
 import Modal from "../utils/Modal"
 import addNewKeep from "../components/addNewKeep"
 import userKeepCard from "../components/userKeepCard"
+import addNewVault from "../components/addNewVault"
 export default {
   data() {
     return {
@@ -63,6 +68,7 @@ export default {
     Modal,
     addNewKeep,
     userKeepCard,
+    addNewVault,
   }
 };
 </script>
