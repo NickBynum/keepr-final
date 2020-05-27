@@ -10,11 +10,17 @@
         >New Keep!</button>
       </div>
       <div class="col-3">
-        <button class="btn btn-outline-primary btn-block" @click="vaultView = false">Show Your Keeps!</button>
+        <button
+          class="btn btn-outline-primary btn-block"
+          @click="vaultView = false"
+        >Show Your Keeps!</button>
       </div>
       <!-- ---------Add New Vault--------- -->
       <div class="col-3">
-        <button class="btn btn-outline-secondary btn-block" @click="vaultView = true">View Your Vaults</button>
+        <button
+          class="btn btn-outline-secondary btn-block"
+          @click="vaultView = true"
+        >View Your Vaults</button>
       </div>
       <div class="col-3">
         <button
@@ -23,7 +29,7 @@
           data-target="#addVaultModal"
         >New Vault!</button>
       </div>
-            <!-- ---------Slot Modal--------- -->
+      <!-- ---------Slot Modal--------- -->
       <Modal title="Keep your Keeps Kept, in the vault!" id="addVaultModal">
         <addNewVault></addNewVault>
       </Modal>
@@ -33,12 +39,11 @@
       </Modal>
       <!-- //NOTE ---------ALL User's Keeps ------------>
     </div>
-    <div v-if="!vaultView" class="row justify-content-between">
+    <div v-if="!vaultView" class="row justify-content-star">
       <userKeepCard v-for="userKeep in userKeeps" :keepData="userKeep" :key="userKeep.id"></userKeepCard>
     </div>
-    <div v-else class="row justify-content-between">
-      temp placeholder for vaults
-<!-- <userVaults v-for="userVault in userVault" :vaultData="userVault" :key="userVault.id"> -->
+    <div v-else class="row justify-content-star">
+      <vaultCard v-for="vault in vaults" :vaultData="vault" :key="vault.id"></vaultCard>
     </div>
   </div>
 </template>
@@ -48,6 +53,7 @@ import Modal from "../utils/Modal"
 import addNewKeep from "../components/addNewKeep"
 import userKeepCard from "../components/userKeepCard"
 import addNewVault from "../components/addNewVault"
+import vaultCard from "../components/vaultCard"
 export default {
   data() {
     return {
@@ -56,10 +62,14 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getUserKeeps");
+    this.$store.dispatch("getUserVaults");
   },
   computed: {
     userKeeps() {
       return this.$store.state.userKeeps;
+    },
+    vaults() {
+      return this.$store.state.vaults
     }
   },
   method: {
@@ -69,6 +79,7 @@ export default {
     addNewKeep,
     userKeepCard,
     addNewVault,
+    vaultCard
   }
 };
 </script>
