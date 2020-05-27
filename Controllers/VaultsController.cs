@@ -11,28 +11,48 @@ using Microsoft.Extensions.Logging;
 
 namespace Keepr.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class VaultsController : ControllerBase
+  [ApiController]
+  [Route("api/[controller]")]
+  public class VaultsController : ControllerBase
+  {
+    private readonly VaultsService _vs;
+    public VaultsController(VaultsService vs)
     {
-        private readonly VaultsService _vs;
-        public VaultsController(VaultsService vs)
-        {
-            _vs = vs;
-        }
-        //NOTE path is https://localhost:5001/api/vaults
-        [HttpGet]
-        [Authorize]
-        public ActionResult<IEnumerable<Vault>> Get()
-        {
-            try
-            {
-                return Ok(_vs.Get());
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            };
-        }
+      _vs = vs;
     }
+    //NOTE path is https://localhost:5001/api/vaults
+    [HttpGet]
+    [Authorize]
+    public ActionResult<IEnumerable<Vault>> Get()
+    {
+      try
+      {
+        return Ok(_vs.Get());
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      };
+    }
+
+    [Authorize]
+    [HttpGet("user")]
+    public ActionResult<IEnumerable<Keep>> VaultsByUser()
+    {
+      try
+      {
+        Claim user = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+        if (user == null)
+        {
+          throw new Exception("You must be logged in to get your vaults!.");
+        }
+        string userId = user.Value;
+        return Ok(_vs.GetByUserId(userId));
+      }
+      catch (System.Exception err)
+      {
+        return BadRequest(err.Message);
+      }
+    }
+  }
 }

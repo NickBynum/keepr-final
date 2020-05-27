@@ -8,18 +8,18 @@ namespace Keepr.Services
 {
   public class VaultsService
   {
-    private readonly KeepsRepository _repo;
-    public VaultsService(KeepsRepository repo)
+    private readonly VaultsRepository _repo;
+    public VaultsService(VaultsRepository repo)
     {
       _repo = repo;
     }
-    public IEnumerable<Keep> Get()
+    public IEnumerable<Vault> Get()
     {
       return _repo.Get();
     }
-    internal IEnumerable<Keep> GetByUserId(string userId)
+    internal IEnumerable<Vault> GetByUserId(string userId)
     {
-      return _repo.GetKeepsByUserId(userId);
+      return _repo.GetVaultsByUserId(userId);
     }
   }
 }
