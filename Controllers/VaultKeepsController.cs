@@ -13,21 +13,24 @@ namespace Keepr.Controllers
 {
   [ApiController]
   [Route("api/[controller]")]
-  public class KeepVaultsController : ControllerBase
+  public class VaultKeepsController : ControllerBase
   {
-    private readonly KeepVaultsService _kvs;
+    private readonly VaultKeepsService _vks;
 
-    public KeepVaultsController(KeepVaultsService kvs)
+    public VaultKeepsController(VaultKeepsService vks)
     {
-      _kvs = kvs;
+      _vks = vks;
     }
 
     [HttpPost]
-    public ActionResult<KeepVault> Create([FromBody] KeepVault newKeepVault)
+    [Authorize]
+    public ActionResult<VaultKeep> Create([FromBody] VaultKeep newVaultKeep)
     {
       try
       {
-        return Ok(_kvs.Create(newKeepVault));
+        var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        newVaultKeep.UserId = userId;
+        return Ok(_vks.Create(newVaultKeep));
       }
       catch (System.Exception)
       {
@@ -41,7 +44,7 @@ namespace Keepr.Controllers
     {
       try
       {
-        return Ok(_kvs.Delete(id));
+        return Ok(_vks.Delete(id));
       }
       catch (System.Exception error)
       {

@@ -6,18 +6,18 @@ using Keepr.Repositories;
 
 namespace Keepr.Services
 {
-  public class KeepVaultsService
+  public class VaultKeepsService
   {
     private readonly VaultKeepsRepository _repo;
 
-    public KeepVaultsService(VaultKeepsRepository repo)
+    public VaultKeepsService(VaultKeepsRepository repo)
     {
       _repo = repo;
     }
 
-    internal KeepVault Create(KeepVault newKeepVault)
+    internal VaultKeep Create(VaultKeep newVaultKeep)
     {
-      return _repo.Create(newKeepVault);
+      return _repo.Create(newVaultKeep);
     }
 
     internal string Delete(int id)

@@ -15,13 +15,13 @@ namespace Keepr.Repositories
       _db = db;
     }
 
-    internal VaultKeep Create(VaultKeep newTagBlog)
+    internal VaultKeep Create(VaultKeep newVaultKeep)
     {
       string sql = @"
         INSERT INTO vaultkeeps
-        (vaultId, keepId)
+        (vaultId, keepId, userId)
         VALUES
-        (@VaultId, @KeepId);
+        (@VaultId, @KeepId, @UserId);
         SELECT LAST_INSERT_ID()";
       newVaultKeep.Id = _db.ExecuteScalar<int>(sql, newVaultKeep);
       return newVaultKeep;
