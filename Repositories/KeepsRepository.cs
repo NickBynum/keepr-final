@@ -38,6 +38,19 @@ SELECT LAST_INSERT_ID()";
       KeepData.Id = _db.ExecuteScalar<int>(sql, KeepData);
       return KeepData;
     }
+        internal IEnumerable<VaultKeepViewModel> GetKeepsByVaultId(int VaultId)
+    {
+      string sql = @"
+        SELECT
+        k.*,
+        v.name As Vault,
+        vk.id AS KeepVaultId
+        FROM vaultkeeps vk
+        INNER JOIN keeps k ON k.id = vk.keepId
+        INNER JOIN vaults v ON v.id = vk.VaultId
+        WHERE vaultId = @VaultId";
+      return _db.Query<VaultKeepViewModel>(sql, new { VaultId });
+    }
     internal Keep GetById(int id)
     {
         string sql = "SELECT * FROM keeps WHERE id = @Id";
@@ -50,5 +63,6 @@ SELECT LAST_INSERT_ID()";
         int affectedRows = _db.Execute(sql, new {id, userId });
         return affectedRows == 1;
     }
+
   }
 }

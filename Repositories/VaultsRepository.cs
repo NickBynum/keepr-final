@@ -17,7 +17,7 @@ namespace Keepr.Repositories
 
     internal IEnumerable<Vault> Get()
     {
-      string sql = "SELECT * FROM Vaults WHERE isPrivate = 0;";
+      string sql = "SELECT * FROM Vaults";
       return _db.Query<Vault>(sql);
     }
 

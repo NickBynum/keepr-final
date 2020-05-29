@@ -16,9 +16,11 @@ namespace Keepr.Controllers
   public class VaultsController : ControllerBase
   {
     private readonly VaultsService _vs;
-    public VaultsController(VaultsService vs)
+    private readonly KeepsService _ks;
+    public VaultsController(VaultsService vs, KeepsService ks)
     {
       _vs = vs;
+      _ks = ks;
     }
     //NOTE path is https://localhost:5001/api/vaults
     [HttpGet]
@@ -84,6 +86,18 @@ namespace Keepr.Controllers
       catch (System.Exception error)
       {
         return BadRequest(error.Message);
+      }
+    }
+        [HttpGet("{id}/keeps")]
+    public ActionResult<IEnumerable<VaultKeepViewModel>> GetKeepsByVaultId(int id)
+    {
+      try
+      {
+        return Ok(_ks.GetKeepsByVaultId(id));
+      }
+      catch (System.Exception err)
+      {
+        return BadRequest(err.Message);
       }
     }
   }
